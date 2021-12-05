@@ -10,14 +10,14 @@ class BoardCell:
     marked: bool
 
 
-def _get_numbers_and_board(contents: str) -> tuple:
+def _get_numbers_and_boards(contents: str) -> tuple:
     # list of lists of BoardCell objects
     ret_boards = []
 
     # list of random number (1st line of contents)
     ret_random_numbers = []
 
-    # regex to extract randon numbers of the 1st line
+    # regex to extract random numbers of the 1st line
     random_numbers_re = re.compile(r'(.*,.*)')
 
     random_numbers_match = random_numbers_re.search(contents)
@@ -39,9 +39,6 @@ def _get_numbers_and_board(contents: str) -> tuple:
     for line in contents.split('\n'):
         line = line.strip()
         if line:
-            # board_numbers.append(
-            #     list(map(lambda x: BoardCell(int(x), False), line.split()))
-            # )
             board_numbers.append(
                 list(
                     map(
@@ -72,10 +69,10 @@ def winner_found(board) -> bool:
             return True
 
     # check by cols
-    for j_col in range(n_cols):
+    for j in range(n_cols):
         marked = []
         for rowline in board:
-            marked.append(rowline[j_col].marked)
+            marked.append(rowline[j].marked)
 
         if all(marked):
             return True
@@ -84,7 +81,7 @@ def winner_found(board) -> bool:
 
 
 def part1(contents):
-    random_numbers, boards = _get_numbers_and_board(contents)
+    random_numbers, boards = _get_numbers_and_boards(contents)
 
     winner_is_found = False
     i_winner_board = -1
@@ -118,7 +115,7 @@ def part1(contents):
 
 def part2(xs):
     # based on part1 (copy/paste):
-    random_numbers, boards = _get_numbers_and_board(contents)
+    random_numbers, boards = _get_numbers_and_boards(contents)
 
     winner_is_found = False
     last_won_board = None
