@@ -68,7 +68,7 @@ def part2(contents):
                 if diff_len == 2:
                     # 9
                     signals_segments[9] = pset
-                elif diff_len == 3:
+                else:
                     # 6 or 0
                     diff_len = len(pset - signals_segments[7])
                     if diff_len == 3:
