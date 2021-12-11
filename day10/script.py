@@ -80,5 +80,5 @@ if __name__ == '__main__':
 
     # contents = Path('input_sample.txt').read_text().strip()
 
-    # part1(contents)
+    part1(contents)
     part2(contents)
