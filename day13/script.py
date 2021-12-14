@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-import math
-import operator
 import re
-from copy import deepcopy
 from pathlib import Path
 
 
