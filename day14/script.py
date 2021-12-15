@@ -14,11 +14,11 @@ def get_parsed(contents):
     return template, ret_mappings
 
 
-def part1(contents, steps: int = 10):
+def part1(contents):
     template, mappings = get_parsed(contents)
 
-    for step in range(steps):
-        print(f'step: {step+1}')
+    NSTEPS = 10
+    for step in range(NSTEPS):
         pieces = (template[i : i + 2] for i in range(len(template) - 1))
         pieces = [
             '%s%s%s' % (p[0], mappings[p], p[1]) if p in mappings else p
@@ -55,12 +55,7 @@ def part1(contents, steps: int = 10):
         most_common_value = max(most_common_value, v)
         least_common_value = min(least_common_value, v)
 
-    print(
-        'Part{x}: {diff}'.format(
-            x=1 if steps == 10 else 2,
-            diff=most_common_value - least_common_value,
-        )
-    )
+    print(f'Part1: diff: {most_common_value - least_common_value}')
 
 
 def part2(contents):
@@ -68,9 +63,9 @@ def part2(contents):
 
 
 if __name__ == '__main__':
-    contents = Path('input.txt').read_text().strip()
+    # contents = Path('input.txt').read_text().strip()
 
-    # contents = Path('input_sample.txt').read_text().strip()
+    contents = Path('input_sample.txt').read_text().strip()
 
     part1(contents)
-    # part1(contents, steps=40)
+    part2(contents)
